@@ -3,9 +3,51 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{618C575C-281A-4342-A2F3-B3659D329D7C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Adapters", "Adapters", "{6B9F9CCD-0ACA-409D-AE2D-AA9A1ADDD4DF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ports", "Ports", "{1E7289B8-6247-41D1-98D3-689C786936A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuvisoftBackend.Core.Domain", "NuvisoftBackend.Core.Domain\NuvisoftBackend.Core.Domain.csproj", "{D44D01B5-808A-49E1-965A-6CD6C85D0D72}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuvisoftBackend.Core.Application", "NuvisoftBackend.Core.Application\NuvisoftBackend.Core.Application.csproj", "{28A30BF3-988E-4CED-8FE6-CEE4D0AA3C90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuvisoftBackend.Core.Infraestructure", "NuvisoftBackend.Core.Infraestructure\NuvisoftBackend.Core.Infraestructure.csproj", "{703F9DBF-3373-4C56-A717-51D278B90536}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuvisoftBackend.Adapters.SQLServerDataAccess", "NuvisoftBackend.Adapters.SQLServerDataAccess\NuvisoftBackend.Adapters.SQLServerDataAccess.csproj", "{EA840936-DA98-4AA1-9FC4-EF785D67D4F4}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D44D01B5-808A-49E1-965A-6CD6C85D0D72}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D44D01B5-808A-49E1-965A-6CD6C85D0D72}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D44D01B5-808A-49E1-965A-6CD6C85D0D72}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D44D01B5-808A-49E1-965A-6CD6C85D0D72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28A30BF3-988E-4CED-8FE6-CEE4D0AA3C90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28A30BF3-988E-4CED-8FE6-CEE4D0AA3C90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28A30BF3-988E-4CED-8FE6-CEE4D0AA3C90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28A30BF3-988E-4CED-8FE6-CEE4D0AA3C90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{703F9DBF-3373-4C56-A717-51D278B90536}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{703F9DBF-3373-4C56-A717-51D278B90536}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{703F9DBF-3373-4C56-A717-51D278B90536}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{703F9DBF-3373-4C56-A717-51D278B90536}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA840936-DA98-4AA1-9FC4-EF785D67D4F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA840936-DA98-4AA1-9FC4-EF785D67D4F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA840936-DA98-4AA1-9FC4-EF785D67D4F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA840936-DA98-4AA1-9FC4-EF785D67D4F4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D44D01B5-808A-49E1-965A-6CD6C85D0D72} = {618C575C-281A-4342-A2F3-B3659D329D7C}
+		{28A30BF3-988E-4CED-8FE6-CEE4D0AA3C90} = {618C575C-281A-4342-A2F3-B3659D329D7C}
+		{703F9DBF-3373-4C56-A717-51D278B90536} = {618C575C-281A-4342-A2F3-B3659D329D7C}
+		{EA840936-DA98-4AA1-9FC4-EF785D67D4F4} = {6B9F9CCD-0ACA-409D-AE2D-AA9A1ADDD4DF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E33E6005-BE3D-4C26-A751-664902F90B49}
