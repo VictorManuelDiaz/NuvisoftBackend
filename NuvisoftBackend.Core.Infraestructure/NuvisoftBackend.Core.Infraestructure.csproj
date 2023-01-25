@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\NuvisoftBackend.Adapters.SQLServerDataAccess\NuvisoftBackend.Adapters.SQLServerDataAccess.csproj" />
+    <ProjectReference Include="..\NuvisoftBackend.Core.Domain\NuvisoftBackend.Core.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -15,6 +15,7 @@ namespace NuvisoftBackend.Core.Domain.Models
         public string type { get; set; }
         public string description { get; set; }
         public int score { get; set; }
+        public Boolean is_auto { get; set; }
         public Guid template_id { get; set; }
         public DateTime created_at { get; set; }
         public DateTime updated_at { get; set; }
