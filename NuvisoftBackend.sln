@@ -9,13 +9,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Adapters", "Adapters", "{6B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Ports", "Ports", "{1E7289B8-6247-41D1-98D3-689C786936A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuvisoftBackend.Core.Domain", "NuvisoftBackend.Core.Domain\NuvisoftBackend.Core.Domain.csproj", "{D44D01B5-808A-49E1-965A-6CD6C85D0D72}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NuvisoftBackend.Core.Domain", "NuvisoftBackend.Core.Domain\NuvisoftBackend.Core.Domain.csproj", "{D44D01B5-808A-49E1-965A-6CD6C85D0D72}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuvisoftBackend.Core.Application", "NuvisoftBackend.Core.Application\NuvisoftBackend.Core.Application.csproj", "{28A30BF3-988E-4CED-8FE6-CEE4D0AA3C90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NuvisoftBackend.Core.Application", "NuvisoftBackend.Core.Application\NuvisoftBackend.Core.Application.csproj", "{28A30BF3-988E-4CED-8FE6-CEE4D0AA3C90}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuvisoftBackend.Core.Infraestructure", "NuvisoftBackend.Core.Infraestructure\NuvisoftBackend.Core.Infraestructure.csproj", "{703F9DBF-3373-4C56-A717-51D278B90536}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NuvisoftBackend.Core.Infraestructure", "NuvisoftBackend.Core.Infraestructure\NuvisoftBackend.Core.Infraestructure.csproj", "{703F9DBF-3373-4C56-A717-51D278B90536}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuvisoftBackend.Adapters.SQLServerDataAccess", "NuvisoftBackend.Adapters.SQLServerDataAccess\NuvisoftBackend.Adapters.SQLServerDataAccess.csproj", "{EA840936-DA98-4AA1-9FC4-EF785D67D4F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NuvisoftBackend.Adapters.SQLServerDataAccess", "NuvisoftBackend.Adapters.SQLServerDataAccess\NuvisoftBackend.Adapters.SQLServerDataAccess.csproj", "{EA840936-DA98-4AA1-9FC4-EF785D67D4F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuvisoftBackend.Ports.API", "NuvisoftBackend.Ports.API\NuvisoftBackend.Ports.API.csproj", "{7E04A4AA-437A-44FE-AB98-D4A4332A4C83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{EA840936-DA98-4AA1-9FC4-EF785D67D4F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA840936-DA98-4AA1-9FC4-EF785D67D4F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA840936-DA98-4AA1-9FC4-EF785D67D4F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E04A4AA-437A-44FE-AB98-D4A4332A4C83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E04A4AA-437A-44FE-AB98-D4A4332A4C83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E04A4AA-437A-44FE-AB98-D4A4332A4C83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E04A4AA-437A-44FE-AB98-D4A4332A4C83}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 		{28A30BF3-988E-4CED-8FE6-CEE4D0AA3C90} = {618C575C-281A-4342-A2F3-B3659D329D7C}
 		{703F9DBF-3373-4C56-A717-51D278B90536} = {618C575C-281A-4342-A2F3-B3659D329D7C}
 		{EA840936-DA98-4AA1-9FC4-EF785D67D4F4} = {6B9F9CCD-0ACA-409D-AE2D-AA9A1ADDD4DF}
+		{7E04A4AA-437A-44FE-AB98-D4A4332A4C83} = {1E7289B8-6247-41D1-98D3-689C786936A9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E33E6005-BE3D-4C26-A751-664902F90B49}
