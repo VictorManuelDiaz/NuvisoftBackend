@@ -9,6 +9,6 @@ namespace NuvisoftBackend.Core.Domain.Interfaces
 {
     public interface IUpdate<Entity>
     {
-        Entity update(Entity entity);
+        Entity Update(Entity entity);
     }
 }

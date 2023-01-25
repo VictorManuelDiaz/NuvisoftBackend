@@ -53,7 +53,7 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
             db.SaveChanges();
         }
 
-        public Answer update(Answer entity)
+        public Answer Update(Answer entity)
         {
             var selectedAnswer = db.Answers
               .Where(v => v.answer_id == entity.answer_id)

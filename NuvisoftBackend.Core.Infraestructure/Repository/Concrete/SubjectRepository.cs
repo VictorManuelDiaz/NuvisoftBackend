@@ -52,7 +52,7 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
             db.SaveChanges();
         }
 
-        public Subject update(Subject entity)
+        public Subject Update(Subject entity)
         {
             var selectedSubject = db.Subjects
                .Where(v => v.subject_id == entity.subject_id)

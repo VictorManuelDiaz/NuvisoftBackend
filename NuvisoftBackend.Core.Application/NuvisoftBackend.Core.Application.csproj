@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\NuvisoftBackend.Core.Domain\NuvisoftBackend.Core.Domain.csproj" />
+    <ProjectReference Include="..\NuvisoftBackend.Core.Infraestructure\NuvisoftBackend.Core.Infraestructure.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -51,7 +51,7 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
             db.SaveChanges();
         }
 
-        public Template update(Template entity)
+        public Template Update(Template entity)
         {
             var selectedTemplate = db.Templates
               .Where(v => v.template_id == entity.template_id)
