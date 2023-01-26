@@ -28,16 +28,16 @@ namespace NuvisoftBackend.Ports.API.Controllers.v1
             return service;
         }
 
-        // GET: api/<SubjectController>
         [HttpGet]
+        [Route("get_all")]
         public ActionResult<IEnumerable<Subject>> Get()
         {
             SubjectUseCase service = CreateService();
             return Ok(service.GetAll());
         }
 
-        // GET api/<SubjectController>/5
-        [HttpGet("{id}")]
+        [HttpGet]
+        [Route("get_by_id/{id}")]
         public ActionResult<Subject> Get(Guid id)
         {
             SubjectUseCase service = CreateService();
@@ -45,8 +45,8 @@ namespace NuvisoftBackend.Ports.API.Controllers.v1
             return Ok(service.GetById(id));
         }
 
-        // POST api/<SubjectController>
         [HttpPost]
+        [Route("create")]
         public ActionResult<Subject> Post([FromBody] Subject subject)
         {
             SubjectUseCase service = CreateService();
@@ -56,8 +56,8 @@ namespace NuvisoftBackend.Ports.API.Controllers.v1
             return Ok(result);
         }
 
-        // PUT api/<SubjectController>/5
-        [HttpPut("{id}")]
+        [HttpPut]
+        [Route("update/{id}")]
         public ActionResult Put(Guid id, [FromBody] Subject subject)
         {
             SubjectUseCase service = CreateService();
@@ -67,8 +67,8 @@ namespace NuvisoftBackend.Ports.API.Controllers.v1
             return Ok("Editado exitosamente");
         }
 
-        // DELETE api/<SubjectController>/5
-        [HttpDelete("{id}")]
+        [HttpDelete]
+        [Route("delete/{id}")]
         public ActionResult Delete(Guid id)
         {
             SubjectUseCase service = CreateService();
