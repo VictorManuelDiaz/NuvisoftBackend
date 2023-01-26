@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NuvisoftBackend.Adapters.SQLServerDataAccess.Entities;
-using NuvisoftBackend.Adapters.SQLServerDataAccess.Utils;
 using NuvisoftBackend.Core.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -12,10 +11,17 @@ namespace NuvisoftBackend.Adapters.SQLServerDataAccess.Contexts
 {
     public class NuvisoftDB : DbContext
     {
+        private string ConnectionString;
         public DbSet<Subject> Subjects { get; set; }
         public DbSet<Template> Templates { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<Answer> Answers { get; set; }
+
+        public NuvisoftDB(string ConnectionString)
+        {
+            this.ConnectionString = ConnectionString;
+        }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -28,7 +34,7 @@ namespace NuvisoftBackend.Adapters.SQLServerDataAccess.Contexts
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseSqlServer(GlobalSetting.ConnectionString);
+            options.UseSqlServer(ConnectionString);
         }
     }
 }

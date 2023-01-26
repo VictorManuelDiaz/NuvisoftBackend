@@ -13,10 +13,15 @@ namespace NuvisoftBackend.Ports.API.Controllers.v1
     [ApiController]
     public class AnswerController : ControllerBase
     {
+        private string ConnectionString;
+        public AnswerController(IConfiguration configuration)
+        {
+            ConnectionString = configuration.GetConnectionString("SqlServer");
+        }
         [NonAction]
         public AnswerUseCase CreateService()
         {
-            NuvisoftDB db = new NuvisoftDB();
+            NuvisoftDB db = new NuvisoftDB(ConnectionString);
             AnswerRepository repository = new AnswerRepository(db);
             AnswerUseCase service = new AnswerUseCase(repository);
 
