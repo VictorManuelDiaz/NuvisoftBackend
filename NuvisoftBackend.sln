@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NuvisoftBackend.Core.Infrae
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NuvisoftBackend.Adapters.SQLServerDataAccess", "NuvisoftBackend.Adapters.SQLServerDataAccess\NuvisoftBackend.Adapters.SQLServerDataAccess.csproj", "{EA840936-DA98-4AA1-9FC4-EF785D67D4F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NuvisoftBackend.Ports.API", "NuvisoftBackend.Ports.API\NuvisoftBackend.Ports.API.csproj", "{7E04A4AA-437A-44FE-AB98-D4A4332A4C83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NuvisoftBackend.Ports.API", "NuvisoftBackend.Ports.API\NuvisoftBackend.Ports.API.csproj", "{7E04A4AA-437A-44FE-AB98-D4A4332A4C83}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

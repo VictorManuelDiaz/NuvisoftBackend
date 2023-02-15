@@ -11,53 +11,54 @@ namespace NuvisoftBackend.Ports.API.Controllers.v1
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiVersion("1.0")]
     [ApiController]
-    public class QuestionController : ControllerBase
+    public class JobController : ControllerBase
     {
         [NonAction]
-        public QuestionUseCase CreateService()
+        public JobUseCase CreateService()
         {
             NuvisoftDB db = new NuvisoftDB();
-            QuestionRepository repository = new QuestionRepository(db);
-            QuestionUseCase service = new QuestionUseCase(repository);
+            JobRepository repository = new JobRepository(db);
+            JobUseCase service = new JobUseCase(repository);
 
             return service;
         }
 
         [HttpGet]
         [Route("get_all")]
-        public ActionResult<IEnumerable<Question>> Get()
+        public ActionResult<IEnumerable<Job>> Get()
         {
-            QuestionUseCase service = CreateService();
+            JobUseCase service = CreateService();
             return Ok(service.GetAll());
         }
 
         [HttpGet]
         [Route("get_by_id/{id}")]
-        public ActionResult<Question> Get(Guid id)
+        public ActionResult<Job> Get(Guid id)
         {
-            QuestionUseCase service = CreateService();
+            JobUseCase service = CreateService();
 
             return Ok(service.GetById(id));
         }
 
         [HttpPost]
         [Route("create")]
-        public ActionResult<Question> Post([FromBody] Question question)
+        public ActionResult<Job> Post([FromBody] Job job)
         {
-            QuestionUseCase service = CreateService();
+            JobUseCase service = CreateService();
 
-            var result = service.Create(question);
+            var result = service.Create(job);
 
             return Ok(result);
         }
 
+
         [HttpPut]
         [Route("update/{id}")]
-        public ActionResult Put(Guid id, [FromBody] Question question)
+        public ActionResult Put(Guid id, [FromBody] Job job)
         {
-            QuestionUseCase service = CreateService();
-            question.question_id = id;
-            service.Update(question);
+            JobUseCase service = CreateService();
+            job.job_id = id;
+            service.Update(job);
 
             return Ok("Editado exitosamente");
         }
@@ -66,7 +67,7 @@ namespace NuvisoftBackend.Ports.API.Controllers.v1
         [Route("delete/{id}")]
         public ActionResult Delete(Guid id)
         {
-            QuestionUseCase service = CreateService();
+            JobUseCase service = CreateService();
             service.Delete(id);
             return Ok("Eliminado exitosamente");
         }

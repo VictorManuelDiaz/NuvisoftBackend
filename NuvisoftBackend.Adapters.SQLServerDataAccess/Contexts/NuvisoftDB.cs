@@ -11,15 +11,19 @@ namespace NuvisoftBackend.Adapters.SQLServerDataAccess.Contexts
 {
     public class NuvisoftDB : DbContext
     {
-        private string ConnectionString;
         public DbSet<Subject> Subjects { get; set; }
         public DbSet<Template> Templates { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<Answer> Answers { get; set; }
 
-        public NuvisoftDB(string ConnectionString)
+        public DbSet<Job> Jobs { get; set; }
+
+        public NuvisoftDB() : base()
         {
-            this.ConnectionString = ConnectionString;
+        }
+
+        public NuvisoftDB(DbContextOptions<NuvisoftDB> options) : base(options)
+        {
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
@@ -30,11 +34,15 @@ namespace NuvisoftBackend.Adapters.SQLServerDataAccess.Contexts
             builder.ApplyConfiguration(new ETemplate());
             builder.ApplyConfiguration(new EQuestion());
             builder.ApplyConfiguration(new EAnswer());
+            builder.ApplyConfiguration(new EJob());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseSqlServer(ConnectionString);
+            if (!options.IsConfigured)
+            {
+                options.UseSqlServer("Data Source=VMDS\\SQLEXPRESS;Initial Catalog=Nuvisoft;Integrated Security=True;");
+            }
         }
     }
 }

@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.EntityFrameworkCore;
+using NuvisoftBackend.Adapters.SQLServerDataAccess.Contexts;
 using NuvisoftBackend.Ports.API;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +18,11 @@ builder.Services.AddCors(
                 .AllowAnyMethod()
         )
 );
+
+builder.Services.AddDbContext<NuvisoftDB>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SqlServer"))
+);
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

@@ -7,22 +7,18 @@ using System.Threading.Tasks;
 
 namespace NuvisoftBackend.Core.Domain.Models
 {
-    //Modelo Plantillas
-    public class Template
+    // Modelo Trabajos
+    public class Job
     {
+        public Guid job_id { get; set; }
+        public DateTime start { get; set; }
+        public DateTime end { get; set; }
         public Guid template_id { get; set; }
-        public string title { get; set; }
-        public string type { get; set; }
-        public string description { get; set; }
-        public Guid subject_id { get; set; }
         public DateTime created_at { get; set; }
         public DateTime updated_at { get; set; }
         public Guid created_by { get; set; }
         public Guid updated_by { get; set; }
-        [ForeignKey("subject_id")]
-        public Subject Subject { get; set; }
-        public List<Question> Questions { get; set; }
-        public List<Job> Jobs { get; set; }
-
+        [ForeignKey("template_id")]
+        public Template Template { get; set; }
     }
 }

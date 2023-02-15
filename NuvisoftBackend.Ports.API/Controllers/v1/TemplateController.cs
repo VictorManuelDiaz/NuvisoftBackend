@@ -13,15 +13,10 @@ namespace NuvisoftBackend.Ports.API.Controllers.v1
     [ApiController]
     public class TemplateController : ControllerBase
     {
-        private string ConnectionString;
-        public TemplateController(IConfiguration configuration)
-        {
-            ConnectionString = configuration.GetConnectionString("SqlServer");
-        }
         [NonAction]
         public TemplateUseCase CreateService()
         {
-            NuvisoftDB db = new NuvisoftDB(ConnectionString);
+            NuvisoftDB db = new NuvisoftDB();
             TemplateRepository repository = new TemplateRepository(db);
             TemplateUseCase service = new TemplateUseCase(repository);
 
