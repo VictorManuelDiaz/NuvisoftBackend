@@ -15,8 +15,9 @@ namespace NuvisoftBackend.Adapters.SQLServerDataAccess.Contexts
         public DbSet<Template> Templates { get; set; }
         public DbSet<Question> Questions { get; set; }
         public DbSet<Answer> Answers { get; set; }
-
         public DbSet<Job> Jobs { get; set; }
+        public DbSet<School> Schools { get; set; }
+        public DbSet<User> Users { get; set; }
 
         public NuvisoftDB() : base()
         {
@@ -35,6 +36,8 @@ namespace NuvisoftBackend.Adapters.SQLServerDataAccess.Contexts
             builder.ApplyConfiguration(new EQuestion());
             builder.ApplyConfiguration(new EAnswer());
             builder.ApplyConfiguration(new EJob());
+            builder.ApplyConfiguration(new ESchool());
+            builder.ApplyConfiguration(new EUser());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
