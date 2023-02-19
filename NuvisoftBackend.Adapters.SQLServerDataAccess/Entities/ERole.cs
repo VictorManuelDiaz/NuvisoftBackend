@@ -9,18 +9,15 @@ using System.Threading.Tasks;
 
 namespace NuvisoftBackend.Adapters.SQLServerDataAccess.Entities
 {
-    public class EUser : IEntityTypeConfiguration<User>
+    public class ERole : IEntityTypeConfiguration<Role>
     {
-        public void Configure(EntityTypeBuilder<User> builder)
+        public void Configure(EntityTypeBuilder<Role> builder)
         {
-            builder.ToTable("tb_user");
-
-            builder.HasKey(v => v.user_id);
-            builder.HasOne(v => v.School)
-                .WithMany(v => v.Users);
+            builder.ToTable("tb_role");
+            builder.HasKey(v => v.role_id);
 
             builder.HasMany(v => v.Privileges)
-                .WithOne(v => v.User);
+                .WithOne(v => v.Role);
         }
     }
 }

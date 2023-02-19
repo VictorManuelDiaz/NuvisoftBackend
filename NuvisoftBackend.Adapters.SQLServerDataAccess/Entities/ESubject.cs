@@ -20,6 +20,9 @@ namespace NuvisoftBackend.Adapters.SQLServerDataAccess.Entities
 
             builder.HasMany(v => v.Templates)
                 .WithOne(v => v.Subject);
+
+            builder.HasMany(v => v.PrivilegesSubject)
+               .WithOne(v => v.Subject);
         }
     }
 }

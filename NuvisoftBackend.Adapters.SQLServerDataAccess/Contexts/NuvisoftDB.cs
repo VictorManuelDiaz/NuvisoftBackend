@@ -18,6 +18,9 @@ namespace NuvisoftBackend.Adapters.SQLServerDataAccess.Contexts
         public DbSet<Job> Jobs { get; set; }
         public DbSet<School> Schools { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<Privilege> Privileges { get; set; }
+        public DbSet<PrivilegeSubject> PrivilegesSubject { get; set; }
 
         public NuvisoftDB() : base()
         {
@@ -38,6 +41,9 @@ namespace NuvisoftBackend.Adapters.SQLServerDataAccess.Contexts
             builder.ApplyConfiguration(new EJob());
             builder.ApplyConfiguration(new ESchool());
             builder.ApplyConfiguration(new EUser());
+            builder.ApplyConfiguration(new ERole());
+            builder.ApplyConfiguration(new EPrivilege());
+            builder.ApplyConfiguration(new EPrivilegeSubject());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
