@@ -21,6 +21,8 @@ namespace NuvisoftBackend.Adapters.SQLServerDataAccess.Contexts
         public DbSet<Role> Roles { get; set; }
         public DbSet<Privilege> Privileges { get; set; }
         public DbSet<PrivilegeSubject> PrivilegesSubject { get; set; }
+        public DbSet<Schedule> Schedules { get; set; }
+        public DbSet<SubjectSchedule> SubjectSchedules { get; set; }
 
         public NuvisoftDB() : base()
         {
@@ -44,6 +46,8 @@ namespace NuvisoftBackend.Adapters.SQLServerDataAccess.Contexts
             builder.ApplyConfiguration(new ERole());
             builder.ApplyConfiguration(new EPrivilege());
             builder.ApplyConfiguration(new EPrivilegeSubject());
+            builder.ApplyConfiguration(new ESchedule());
+            builder.ApplyConfiguration(new ESubjectSchedule());
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)

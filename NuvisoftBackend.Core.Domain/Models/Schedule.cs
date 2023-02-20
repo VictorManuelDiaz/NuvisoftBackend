@@ -1,23 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace NuvisoftBackend.Core.Domain.Models
 {
-    //Modelo Rol
-    public class Role
+    //Modelo Horario
+    public class Schedule
     {
-        public Guid role_id { get; set; }
-        public string role_name { get; set; }
-        [Required(AllowEmptyStrings = true)]
-        public string description { get; set; }
+        public Guid schedule_id { get; set; }
+        public string name { get; set; }
+        public string modality { get; set; }
         public DateTime created_at { get; set; }
         public DateTime updated_at { get; set; }
         public Guid created_by { get; set; }
         public Guid updated_by { get; set; }
-        public List<Privilege> Privileges { get; set; }
+        public List<SubjectSchedule> SubjectSchedules { get; set; }
     }
 }

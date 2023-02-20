@@ -44,7 +44,7 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
         public PrivilegeSubject Update(PrivilegeSubject entity)
         {
             var selectedPrivilegeSubject = db.PrivilegesSubject
-              .Where(v => v.privilege_id == entity.privilege_subject_id)
+              .Where(v => v.privilege_subject_id == entity.privilege_subject_id)
               .FirstOrDefault();
 
             if (selectedPrivilegeSubject != null)
