@@ -54,6 +54,7 @@ namespace NuvisoftBackend.Adapters.SQLServerDataAccess.Contexts
         {
             if (!options.IsConfigured)
             {
+                //Cadena de conexión
                 options.UseSqlServer("Data Source=VMDS\\SQLEXPRESS;Initial Catalog=Nuvisoft;Integrated Security=True;");
             }
         }
