@@ -1,4 +1,5 @@
 ﻿using NuvisoftBackend.Adapters.SQLServerDataAccess.Contexts;
+using NuvisoftBackend.Adapters.SQLServerDataAccess.Entities;
 using NuvisoftBackend.Core.Domain.Models;
 using NuvisoftBackend.Core.Infraestructure.Repository.Abstract;
 using System;
@@ -19,6 +20,8 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
         public User Create(User user)
         {
             user.user_id = Guid.NewGuid();
+            user.created_by = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6");
+            user.updated_by = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6");
             user.created_at = DateTime.Now;
             user.updated_at = DateTime.Now;
             db.Users.Add(user);
@@ -66,7 +69,6 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
                 selectedUser.id_card = entity.id_card;
                 selectedUser.school_id = entity.school_id;
                 selectedUser.updated_at = DateTime.Now;
-                selectedUser.updated_by = entity.updated_by;
 
                 db.Entry(selectedUser).State =
                     Microsoft.EntityFrameworkCore.EntityState.Modified;

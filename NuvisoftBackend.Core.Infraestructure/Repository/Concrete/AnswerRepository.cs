@@ -4,6 +4,7 @@ using NuvisoftBackend.Core.Domain.Models;
 using NuvisoftBackend.Core.Infraestructure.Repository.Abstract;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,8 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
         public Answer Create(Answer answer)
         {
             answer.answer_id = Guid.NewGuid();
+            answer.created_by = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6");
+            answer.updated_by = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6");
             answer.created_at = DateTime.Now;
             answer.updated_at = DateTime.Now;
             db.Answers.Add(answer);
@@ -65,7 +68,6 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
                 selectedAnswer.is_correct = entity.is_correct;
                 selectedAnswer.question_id = entity.question_id;
                 selectedAnswer.updated_at = DateTime.Now;
-                selectedAnswer.updated_by = entity.updated_by;
 
                 db.Entry(selectedAnswer).State =
                     Microsoft.EntityFrameworkCore.EntityState.Modified;

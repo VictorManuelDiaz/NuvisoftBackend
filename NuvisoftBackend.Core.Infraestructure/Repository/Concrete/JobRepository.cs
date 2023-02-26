@@ -4,6 +4,7 @@ using NuvisoftBackend.Core.Domain.Models;
 using NuvisoftBackend.Core.Infraestructure.Repository.Abstract;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,8 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
         public Job Create(Job job)
         {
             job.job_id = Guid.NewGuid();
+            job.created_by = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6");
+            job.updated_by = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6");
             job.created_at = DateTime.Now;
             job.updated_at = DateTime.Now;
             db.Jobs.Add(job);
@@ -64,7 +67,6 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
                 selectedJob.end = entity.end;
                 selectedJob.template_id = entity.template_id;
                 selectedJob.updated_at = DateTime.Now;
-                selectedJob.updated_by = entity.updated_by;
 
                 db.Entry(selectedJob).State =
                     Microsoft.EntityFrameworkCore.EntityState.Modified;

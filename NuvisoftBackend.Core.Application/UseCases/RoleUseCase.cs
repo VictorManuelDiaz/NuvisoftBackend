@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace NuvisoftBackend.Core.Application.UseCases
 {
-    public class RoleUseCase : IAuxiliaryUseCase<Role, Guid>
+    public class RoleUseCase : IBaseUseCase<Role, Guid>
     {
-        private readonly IAuxiliaryRepository<Role, Guid> repository;
+        private readonly IBaseRepository<Role, Guid> repository;
 
-        public RoleUseCase(IAuxiliaryRepository<Role, Guid> repository)
+        public RoleUseCase(IBaseRepository<Role, Guid> repository)
         {
             this.repository = repository;
         }
@@ -34,6 +34,16 @@ namespace NuvisoftBackend.Core.Application.UseCases
         {
             repository.Delete(entityId);
             repository.SaveAllChanges();
+        }
+
+        public List<Role> GetAll()
+        {
+            return repository.GetAll();
+        }
+
+        public Role GetById(Guid entityId)
+        {
+            return repository.GetById(entityId);
         }
 
         public Role Update(Role entity)

@@ -23,6 +23,23 @@ namespace NuvisoftBackend.Ports.API.Controllers.v1
             return service;
         }
 
+        [HttpGet]
+        [Route("get_all")]
+        public ActionResult<IEnumerable<Role>> Get()
+        {
+            RoleUseCase service = CreateService();
+            return Ok(service.GetAll());
+        }
+
+        [HttpGet]
+        [Route("get_by_id/{id}")]
+        public ActionResult<Role> Get(Guid id)
+        {
+            RoleUseCase service = CreateService();
+
+            return Ok(service.GetById(id));
+        }
+
         [HttpPost]
         [Route("create")]
         public ActionResult<Role> Post([FromBody] Role role)

@@ -19,6 +19,8 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
         public Privilege Create(Privilege privilege)
         {
             privilege.privilege_id = Guid.NewGuid();
+            privilege.created_by = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6");
+            privilege.updated_by = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6");
             privilege.created_at = DateTime.Now;
             privilege.updated_at = DateTime.Now;
             db.Privileges.Add(privilege);
@@ -50,7 +52,6 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
                 selectedPrivilege.role_id = entity.role_id;
                 selectedPrivilege.user_id = entity.user_id;
                 selectedPrivilege.updated_at = DateTime.Now;
-                selectedPrivilege.updated_by = entity.updated_by;
 
                 db.Entry(selectedPrivilege).State =
                     Microsoft.EntityFrameworkCore.EntityState.Modified;

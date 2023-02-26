@@ -4,6 +4,7 @@ using NuvisoftBackend.Core.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,6 +16,7 @@ namespace NuvisoftBackend.Adapters.SQLServerDataAccess.Entities
         {
             builder.ToTable("tb_role");
             builder.HasKey(v => v.role_id);
+            builder.Property(v => v.description).IsRequired(false);
 
             builder.HasMany(v => v.Privileges)
                 .WithOne(v => v.Role);

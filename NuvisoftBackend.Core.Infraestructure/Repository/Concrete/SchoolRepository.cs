@@ -20,6 +20,8 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
         public School Create(School school)
         {
             school.school_id = Guid.NewGuid();
+            school.created_by = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6");
+            school.updated_by = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6");
             school.created_at = DateTime.Now;
             school.updated_at = DateTime.Now;
             db.Schools.Add(school);
@@ -68,7 +70,6 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
                 selectedSchool.email = entity.email;
                 selectedSchool.phone = entity.phone;
                 selectedSchool.updated_at = DateTime.Now;
-                selectedSchool.updated_by = entity.updated_by;
 
                 db.Entry(selectedSchool).State =
                     Microsoft.EntityFrameworkCore.EntityState.Modified;

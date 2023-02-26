@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
 {
-    public class RoleRepository : IAuxiliaryRepository<Role, Guid>
+    public class RoleRepository : IBaseRepository<Role, Guid>
     {
         private NuvisoftDB db;
         public RoleRepository(NuvisoftDB db)
@@ -21,6 +21,8 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
         public Role Create(Role role)
         {
             role.role_id = Guid.NewGuid();
+            role.created_by =  Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6");
+            role.updated_by = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6");
             role.created_at = DateTime.Now;
             role.updated_at = DateTime.Now;
             db.Roles.Add(role);
@@ -34,6 +36,18 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
 
             if (selectedRole != null)
                 db.Roles.Remove(selectedRole);
+        }
+
+        public List<Role> GetAll()
+        {
+            return db.Roles.ToList();
+        }
+
+        public Role GetById(Guid entityId)
+        {
+            var selectedRole = db.Roles
+                .Where(v => v.role_id == entityId).FirstOrDefault();
+            return selectedRole;
         }
 
         public void SaveAllChanges()
@@ -52,7 +66,6 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
                 selectedRole.role_name = entity.role_name;
                 selectedRole.description = entity.description;
                 selectedRole.updated_at = DateTime.Now;
-                selectedRole.updated_by = entity.updated_by;
 
                 db.Entry(selectedRole).State =
                     Microsoft.EntityFrameworkCore.EntityState.Modified;

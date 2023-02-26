@@ -21,6 +21,8 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
         public SubjectSchedule Create(SubjectSchedule subjectSchedule)
         {
             subjectSchedule.subject_schedule_id = Guid.NewGuid();
+            subjectSchedule.created_by = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6");
+            subjectSchedule.updated_by = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6");
             subjectSchedule.created_at = DateTime.Now;
             subjectSchedule.updated_at = DateTime.Now;
             db.SubjectSchedules.Add(subjectSchedule);
@@ -52,7 +54,6 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
                 selectedSubjectSchedule.subject_id = entity.subject_id;
                 selectedSubjectSchedule.schedule_id = entity.schedule_id;
                 selectedSubjectSchedule.updated_at = DateTime.Now;
-                selectedSubjectSchedule.updated_by = entity.updated_by;
 
                 db.Entry(selectedSubjectSchedule).State =
                     Microsoft.EntityFrameworkCore.EntityState.Modified;

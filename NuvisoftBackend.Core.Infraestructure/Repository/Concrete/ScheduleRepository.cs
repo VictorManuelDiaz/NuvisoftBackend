@@ -21,6 +21,8 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
         public Schedule Create(Schedule schedule)
         {
             schedule.schedule_id = Guid.NewGuid();
+            schedule.created_by = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6");
+            schedule.updated_by = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6");
             schedule.created_at = DateTime.Now;
             schedule.updated_at = DateTime.Now;
             db.Schedules.Add(schedule);
@@ -64,7 +66,6 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
                 selectedSchedule.name = entity.name;
                 selectedSchedule.modality = entity.modality;
                 selectedSchedule.updated_at = DateTime.Now;
-                selectedSchedule.updated_by = entity.updated_by;
 
                 db.Entry(selectedSchedule).State =
                     Microsoft.EntityFrameworkCore.EntityState.Modified;

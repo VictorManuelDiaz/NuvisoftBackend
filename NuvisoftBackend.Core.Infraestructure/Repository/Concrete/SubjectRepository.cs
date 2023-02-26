@@ -1,4 +1,5 @@
 ﻿using NuvisoftBackend.Adapters.SQLServerDataAccess.Contexts;
+using NuvisoftBackend.Adapters.SQLServerDataAccess.Entities;
 using NuvisoftBackend.Core.Domain.Models;
 using NuvisoftBackend.Core.Infraestructure.Repository.Abstract;
 using System;
@@ -20,6 +21,8 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
         public Subject Create(Subject subject)
         {
             subject.subject_id = Guid.NewGuid();
+            subject.created_by = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6");
+            subject.updated_by = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6");
             subject.created_at = DateTime.Now;
             subject.updated_at = DateTime.Now;
             db.Subjects.Add(subject);
@@ -63,7 +66,6 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
                 selectedSubject.name = entity.name;
                 selectedSubject.description = entity.description;
                 selectedSubject.updated_at = DateTime.Now;
-                selectedSubject.updated_by = entity.updated_by;
 
                 db.Entry(selectedSubject).State =
                     Microsoft.EntityFrameworkCore.EntityState.Modified;

@@ -21,6 +21,8 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
         public Question Create(Question question)
         {
             question.question_id = Guid.NewGuid();
+            question.created_by = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6");
+            question.updated_by = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6");
             question.created_at = DateTime.Now;
             question.updated_at = DateTime.Now;
             db.Questions.Add(question);
@@ -67,7 +69,6 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
                 selectedQuestion.score = entity.score;
                 selectedQuestion.template_id = entity.template_id;
                 selectedQuestion.updated_at = DateTime.Now;
-                selectedQuestion.updated_by = entity.updated_by;
 
                 db.Entry(selectedQuestion).State =
                     Microsoft.EntityFrameworkCore.EntityState.Modified;

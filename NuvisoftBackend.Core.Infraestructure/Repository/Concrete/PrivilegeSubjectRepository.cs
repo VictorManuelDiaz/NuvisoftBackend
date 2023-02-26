@@ -21,6 +21,8 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
         public PrivilegeSubject Create(PrivilegeSubject privilegeSubject)
         {
             privilegeSubject.privilege_subject_id = Guid.NewGuid();
+            privilegeSubject.created_by = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6");
+            privilegeSubject.updated_by = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6");
             privilegeSubject.created_at = DateTime.Now;
             privilegeSubject.updated_at = DateTime.Now;
             db.PrivilegesSubject.Add(privilegeSubject);
@@ -52,7 +54,6 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
                 selectedPrivilegeSubject.privilege_id = entity.privilege_id;
                 selectedPrivilegeSubject.subject_id = entity.subject_id;
                 selectedPrivilegeSubject.updated_at = DateTime.Now;
-                selectedPrivilegeSubject.updated_by = entity.updated_by;
 
                 db.Entry(selectedPrivilegeSubject).State =
                     Microsoft.EntityFrameworkCore.EntityState.Modified;
