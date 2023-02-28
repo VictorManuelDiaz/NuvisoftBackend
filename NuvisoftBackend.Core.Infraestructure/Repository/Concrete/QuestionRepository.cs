@@ -1,4 +1,5 @@
-﻿using NuvisoftBackend.Adapters.SQLServerDataAccess.Contexts;
+﻿using Microsoft.EntityFrameworkCore;
+using NuvisoftBackend.Adapters.SQLServerDataAccess.Contexts;
 using NuvisoftBackend.Adapters.SQLServerDataAccess.Entities;
 using NuvisoftBackend.Core.Domain.Models;
 using NuvisoftBackend.Core.Infraestructure.Repository.Abstract;
@@ -40,12 +41,12 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
 
         public List<Question> GetAll()
         {
-            return db.Questions.ToList();
+            return db.Questions.Include(question => question.Template).ToList();
         }
 
         public Question GetById(Guid entityId)
         {
-            var selectedQuestion = db.Questions
+            var selectedQuestion = db.Questions.Include(question => question.Template)
                 .Where(v => v.question_id == entityId).FirstOrDefault();
             return selectedQuestion;
         }

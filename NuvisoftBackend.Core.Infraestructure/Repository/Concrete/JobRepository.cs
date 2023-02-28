@@ -1,4 +1,5 @@
-﻿using NuvisoftBackend.Adapters.SQLServerDataAccess.Contexts;
+﻿using Microsoft.EntityFrameworkCore;
+using NuvisoftBackend.Adapters.SQLServerDataAccess.Contexts;
 using NuvisoftBackend.Adapters.SQLServerDataAccess.Entities;
 using NuvisoftBackend.Core.Domain.Models;
 using NuvisoftBackend.Core.Infraestructure.Repository.Abstract;
@@ -40,12 +41,12 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
 
         public List<Job> GetAll()
         {
-            return db.Jobs.ToList();
+            return db.Jobs.Include(job => job.Template).ToList();
         }
 
         public Job GetById(Guid entityId)
         {
-            var selectedJob = db.Jobs
+            var selectedJob = db.Jobs.Include(job => job.Template)
                 .Where(v => v.job_id == entityId).FirstOrDefault();
             return selectedJob;
         }
