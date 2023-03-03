@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace NuvisoftBackend.Core.Domain.Models
@@ -22,7 +23,9 @@ namespace NuvisoftBackend.Core.Domain.Models
         public Guid created_by { get; set; }
         public Guid updated_by { get; set; }
         [ForeignKey("template_id")]
+        [JsonPropertyName("Template")]
         public Template Template { get; set; }
+        [JsonPropertyName("Answers")]
         public List<Answer> Answers { get; set; }
     }
 }

@@ -40,12 +40,13 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
 
         public List<User> GetAll()
         {
-            return db.Users.Include(user => user.School).ToList();
+            return db.Users.Include(user => user.School)
+                .Include(user => user.Privileges).ToList();
         }
 
         public User GetById(Guid entityId)
         {
-            var selectedUser = db.Users.Include(user => user.School)
+            var selectedUser = db.Users.Include(user => user.School).Include(user => user.Privileges)
                 .Where(v => v.user_id == entityId).FirstOrDefault();
             return selectedUser;
         }

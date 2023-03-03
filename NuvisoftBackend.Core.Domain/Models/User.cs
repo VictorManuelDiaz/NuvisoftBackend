@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace NuvisoftBackend.Core.Domain.Models
@@ -23,7 +24,9 @@ namespace NuvisoftBackend.Core.Domain.Models
         public Guid updated_by { get; set; }
 
         [ForeignKey("school_id")]
+        [JsonPropertyName("School")]
         public School School { get; set; }
+        [JsonPropertyName("Privileges")]
         public List<Privilege> Privileges { get; set; }
     }
 }

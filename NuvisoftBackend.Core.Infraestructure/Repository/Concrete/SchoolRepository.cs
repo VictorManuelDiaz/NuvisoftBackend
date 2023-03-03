@@ -1,4 +1,5 @@
-﻿using NuvisoftBackend.Adapters.SQLServerDataAccess.Contexts;
+﻿using Microsoft.EntityFrameworkCore;
+using NuvisoftBackend.Adapters.SQLServerDataAccess.Contexts;
 using NuvisoftBackend.Adapters.SQLServerDataAccess.Entities;
 using NuvisoftBackend.Core.Domain.Models;
 using NuvisoftBackend.Core.Infraestructure.Repository.Abstract;
@@ -39,12 +40,12 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
 
         public List<School> GetAll()
         {
-            return db.Schools.ToList();
+            return db.Schools.Include(school => school.Users).ToList();
         }
 
         public School GetById(Guid entityId)
         {
-            var selectedSchool = db.Schools
+            var selectedSchool = db.Schools.Include(school => school.Users)
                 .Where(v => v.school_id == entityId).FirstOrDefault();
             return selectedSchool;
         }

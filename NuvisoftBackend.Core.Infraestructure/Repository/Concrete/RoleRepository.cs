@@ -1,4 +1,5 @@
-﻿using NuvisoftBackend.Adapters.SQLServerDataAccess.Contexts;
+﻿using Microsoft.EntityFrameworkCore;
+using NuvisoftBackend.Adapters.SQLServerDataAccess.Contexts;
 using NuvisoftBackend.Adapters.SQLServerDataAccess.Entities;
 using NuvisoftBackend.Core.Domain.Models;
 using NuvisoftBackend.Core.Infraestructure.Repository.Abstract;
@@ -40,12 +41,12 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
 
         public List<Role> GetAll()
         {
-            return db.Roles.ToList();
+            return db.Roles.Include(role => role.Privileges).ToList();
         }
 
         public Role GetById(Guid entityId)
         {
-            var selectedRole = db.Roles
+            var selectedRole = db.Roles.Include(role => role.Privileges)
                 .Where(v => v.role_id == entityId).FirstOrDefault();
             return selectedRole;
         }

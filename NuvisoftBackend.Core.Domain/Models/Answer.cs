@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace NuvisoftBackend.Core.Domain.Models
@@ -19,6 +20,7 @@ namespace NuvisoftBackend.Core.Domain.Models
         public Guid created_by { get; set; }
         public Guid updated_by { get; set; }
         [ForeignKey("question_id")]
+        [JsonPropertyName("Question")]
         public Question Question { get; set; }
     }
 }

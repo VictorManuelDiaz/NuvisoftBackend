@@ -1,4 +1,5 @@
-﻿using NuvisoftBackend.Adapters.SQLServerDataAccess.Contexts;
+﻿using Microsoft.EntityFrameworkCore;
+using NuvisoftBackend.Adapters.SQLServerDataAccess.Contexts;
 using NuvisoftBackend.Adapters.SQLServerDataAccess.Entities;
 using NuvisoftBackend.Core.Domain.Models;
 using NuvisoftBackend.Core.Infraestructure.Repository.Abstract;
@@ -40,12 +41,12 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
 
         public List<Schedule> GetAll()
         {
-            return db.Schedules.ToList();
+            return db.Schedules.Include(schedule => schedule.SubjectSchedules).ToList();
         }
 
         public Schedule GetById(Guid entityId)
         {
-            var selectedSchedule = db.Schedules
+            var selectedSchedule = db.Schedules.Include(schedule => schedule.SubjectSchedules)
                 .Where(v => v.schedule_id == entityId).FirstOrDefault();
             return selectedSchedule;
         }

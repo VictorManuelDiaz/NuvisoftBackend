@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace NuvisoftBackend.Core.Domain.Models
@@ -18,8 +19,10 @@ namespace NuvisoftBackend.Core.Domain.Models
         public Guid created_by { get; set; }
         public Guid updated_by { get; set; }
         [ForeignKey("privilege_id")]
+        [JsonPropertyName("Privilege")]
         public Privilege Privilege { get; set; }
         [ForeignKey("subject_id")]
+        [JsonPropertyName("Subject")]
         public Subject Subject { get; set; }
 
     }

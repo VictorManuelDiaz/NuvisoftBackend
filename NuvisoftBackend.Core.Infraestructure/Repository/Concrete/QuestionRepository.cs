@@ -41,13 +41,14 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
 
         public List<Question> GetAll()
         {
-            return db.Questions.Include(question => question.Template).ToList();
+            return db.Questions.Include(question => question.Template)
+                .Include(question => question.Answers).ToList();
         }
 
         public Question GetById(Guid entityId)
         {
             var selectedQuestion = db.Questions.Include(question => question.Template)
-                .Where(v => v.question_id == entityId).FirstOrDefault();
+                .Include(question => question.Answers).Where(v => v.question_id == entityId).FirstOrDefault();
             return selectedQuestion;
         }
 
