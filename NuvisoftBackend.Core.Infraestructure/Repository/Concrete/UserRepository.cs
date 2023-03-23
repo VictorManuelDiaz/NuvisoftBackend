@@ -41,7 +41,7 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
         public List<User> GetAll()
         {
             return db.Users.Include(user => user.School)
-                .Include(user => user.Privileges).ToList();
+                .Include(user => user.Privileges).ThenInclude(privilege => privilege.Role).ToList();
         }
 
         public User GetById(Guid entityId)

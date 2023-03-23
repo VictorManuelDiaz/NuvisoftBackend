@@ -43,7 +43,7 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
         {
             return db.Subjects.Include(subject => subject.Templates)
                 .Include(subject => subject.PrivilegesSubject)
-                .Include(subject => subject.SubjectSchedules).ToList();
+                .Include(subject => subject.SubjectSchedules).OrderBy(v => v.created_at).ToList();
         }
 
         public Subject GetById(Guid entityId)
