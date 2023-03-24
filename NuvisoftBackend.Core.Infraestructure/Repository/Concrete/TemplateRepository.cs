@@ -21,8 +21,6 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
         public Template Create(Template template)
         {
             template.template_id = Guid.NewGuid();
-            template.created_by = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6");
-            template.updated_by = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6");
             template.created_at = DateTime.Now;
             template.updated_at = DateTime.Now;
             db.Templates.Add(template);

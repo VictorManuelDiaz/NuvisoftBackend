@@ -21,8 +21,6 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
         public User Create(User user)
         {
             user.user_id = Guid.NewGuid();
-            user.created_by = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6");
-            user.updated_by = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6");
             user.created_at = DateTime.Now;
             user.updated_at = DateTime.Now;
             db.Users.Add(user);
@@ -41,13 +39,15 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
         public List<User> GetAll()
         {
             return db.Users.Include(user => user.School)
-                .Include(user => user.Privileges).ThenInclude(privilege => privilege.Role).ToList();
+                .Include(user => user.Privileges).ThenInclude(privilege => privilege.Role)
+                .Include(user => user.Privileges).ThenInclude(privilege => privilege.PrivilegesSubject)
+                .ThenInclude(privilege => privilege.Subject).ToList();
         }
 
         public User GetById(Guid entityId)
         {
             var selectedUser = db.Users.Include(user => user.School).Include(user => user.Privileges)
-                .Where(v => v.user_id == entityId).FirstOrDefault();
+                .ThenInclude(privilege => privilege.Role).Where(v => v.user_id == entityId).FirstOrDefault();
             return selectedUser;
         }
 

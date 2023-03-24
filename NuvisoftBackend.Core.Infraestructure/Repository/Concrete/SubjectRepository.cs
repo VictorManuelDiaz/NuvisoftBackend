@@ -22,8 +22,6 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
         public Subject Create(Subject subject)
         {
             subject.subject_id = Guid.NewGuid();
-            subject.created_by = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6");
-            subject.updated_by = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6");
             subject.created_at = DateTime.Now;
             subject.updated_at = DateTime.Now;
             db.Subjects.Add(subject);
@@ -43,6 +41,11 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
         {
             return db.Subjects.Include(subject => subject.Templates)
                 .Include(subject => subject.PrivilegesSubject)
+                .ThenInclude(privilege => privilege.Privilege)
+                .ThenInclude(privilege => privilege.Role)
+                .Include(subject => subject.PrivilegesSubject)
+                .ThenInclude(privilege => privilege.Privilege)
+                .ThenInclude(privilege => privilege.User)
                 .Include(subject => subject.SubjectSchedules).OrderBy(v => v.created_at).ToList();
         }
 

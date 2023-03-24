@@ -22,8 +22,6 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
         public Job Create(Job job)
         {
             job.job_id = Guid.NewGuid();
-            job.created_by = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6");
-            job.updated_by = Guid.Parse("3fa85f64-5717-4562-b3fc-2c963f66afa6");
             job.created_at = DateTime.Now;
             job.updated_at = DateTime.Now;
             db.Jobs.Add(job);
