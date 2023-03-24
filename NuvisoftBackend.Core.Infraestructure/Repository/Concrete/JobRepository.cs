@@ -39,7 +39,7 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
 
         public List<Job> GetAll()
         {
-            return db.Jobs.Include(job => job.Template.Subject).ToList();
+            return db.Jobs.Include(job => job.Template.Subject).OrderBy(v => v.created_at).ToList();
         }
 
         public Job GetById(Guid entityId)

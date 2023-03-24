@@ -71,6 +71,7 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
                 selectedQuestion.score = entity.score;
                 selectedQuestion.template_id = entity.template_id;
                 selectedQuestion.updated_at = DateTime.Now;
+                selectedQuestion.is_auto = entity.is_auto;
 
                 db.Entry(selectedQuestion).State =
                     Microsoft.EntityFrameworkCore.EntityState.Modified;

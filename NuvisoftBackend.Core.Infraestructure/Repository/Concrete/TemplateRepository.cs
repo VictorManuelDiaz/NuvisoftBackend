@@ -40,13 +40,15 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
         {
             return db.Templates.Include(template => template.Subject)
                 .Include(template => template.Questions)
-                .Include(template => template.Jobs).ToList();
+                .ThenInclude(question => question.Answers)
+                .Include(template => template.Jobs).OrderBy(v => v.created_at).ToList();
         }
 
         public Template GetById(Guid entityId)
         {
             var selectedTemplate = db.Templates.Include(template => template.Subject)
                 .Include(template => template.Questions)
+                .ThenInclude(question => question.Answers)
                 .Include(template => template.Jobs)
                 .Where(v => v.template_id == entityId).FirstOrDefault();
             return selectedTemplate;
