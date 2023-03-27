@@ -28,5 +28,7 @@ namespace NuvisoftBackend.Core.Domain.Models
         public School School { get; set; }
         [JsonPropertyName("Privileges")]
         public List<Privilege> Privileges { get; set; }
+        [JsonPropertyName("Grades")]
+        public List<Grade> Grades { get; set; }
     }
 }

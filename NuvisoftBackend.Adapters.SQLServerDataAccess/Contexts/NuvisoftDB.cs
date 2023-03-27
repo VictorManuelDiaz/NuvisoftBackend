@@ -16,6 +16,7 @@ namespace NuvisoftBackend.Adapters.SQLServerDataAccess.Contexts
         public DbSet<Question> Questions { get; set; }
         public DbSet<Answer> Answers { get; set; }
         public DbSet<Job> Jobs { get; set; }
+        public DbSet<Grade> Grades { get; set; }
         public DbSet<School> Schools { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
@@ -41,6 +42,7 @@ namespace NuvisoftBackend.Adapters.SQLServerDataAccess.Contexts
             builder.ApplyConfiguration(new EQuestion());
             builder.ApplyConfiguration(new EAnswer());
             builder.ApplyConfiguration(new EJob());
+            builder.ApplyConfiguration(new EGrade());
             builder.ApplyConfiguration(new ESchool());
             builder.ApplyConfiguration(new EUser());
             builder.ApplyConfiguration(new ERole());

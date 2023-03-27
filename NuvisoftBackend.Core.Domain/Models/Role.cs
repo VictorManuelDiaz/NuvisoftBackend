@@ -20,6 +20,7 @@ namespace NuvisoftBackend.Core.Domain.Models
         public Guid created_by { get; set; }
         public Guid updated_by { get; set; }
         [JsonPropertyName("Privileges")]
+        [JsonIgnore]
         public List<Privilege> Privileges { get; set; }
     }
 }

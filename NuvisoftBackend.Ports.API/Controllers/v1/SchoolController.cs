@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using NuvisoftBackend.Adapters.SQLServerDataAccess.Contexts;
 using NuvisoftBackend.Core.Application.UseCases;
 using NuvisoftBackend.Core.Domain.Models;
@@ -13,6 +14,13 @@ namespace NuvisoftBackend.Ports.API.Controllers.v1
     [ApiController]
     public class SchoolController : ControllerBase
     {
+        private readonly IConfiguration _configuration;
+        private readonly IWebHostEnvironment _env;
+        public SchoolController(IConfiguration configuration, IWebHostEnvironment env)
+        {
+            _configuration = configuration;
+            _env = env;
+        }
         [NonAction]
         public SchoolUseCase CreateService()
         {
@@ -69,6 +77,30 @@ namespace NuvisoftBackend.Ports.API.Controllers.v1
             SchoolUseCase service = CreateService();
             service.Delete(id);
             return Ok("Eliminado exitosamente");
+        }
+
+        [Route("save_file")]
+        [HttpPost]
+        public JsonResult SaveFile()
+        {
+            try
+            {
+                var httpRequest = Request.Form;
+                var postedFile = httpRequest.Files[0];
+                string filename = postedFile.FileName;
+                var physicalPath = _env.ContentRootPath + "/Storage/" + filename;
+
+                using (var stream = new FileStream(physicalPath, FileMode.Create))
+                {
+                    postedFile.CopyTo(stream);
+                }
+
+                return new JsonResult(filename);
+            }
+            catch (Exception)
+            {
+                return new JsonResult("photo.png");
+            }
         }
     }
 }

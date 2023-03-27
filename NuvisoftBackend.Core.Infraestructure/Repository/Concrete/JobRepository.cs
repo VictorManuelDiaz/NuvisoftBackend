@@ -39,12 +39,15 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
 
         public List<Job> GetAll()
         {
-            return db.Jobs.Include(job => job.Template.Subject).OrderBy(v => v.created_at).ToList();
+            return db.Jobs.Include(job => job.Template.Subject)
+                .Include(job => job.Template.Questions)
+                .Include(job => job.Grades).OrderBy(v => v.created_at).ToList();
         }
 
         public Job GetById(Guid entityId)
         {
             var selectedJob = db.Jobs.Include(job => job.Template)
+                .Include(job => job.Grades)
                 .Where(v => v.job_id == entityId).FirstOrDefault();
             return selectedJob;
         }

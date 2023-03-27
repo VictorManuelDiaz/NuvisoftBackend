@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.FileProviders;
 using NuvisoftBackend.Adapters.SQLServerDataAccess.Contexts;
 using NuvisoftBackend.Ports.API;
 using System.Text.Json.Serialization;
@@ -41,8 +42,8 @@ builder.Services.AddVersionedApiExplorer(setup =>
     setup.SubstituteApiVersionInUrl = true;
 });
 
-builder.Services.AddControllers().AddJsonOptions(x =>
-                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+builder.Services.AddControllers()
+    .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 builder.Services.AddControllers(options =>
     options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true);
 
@@ -71,6 +72,13 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.UseCors();
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+                   Path.Combine(Directory.GetCurrentDirectory(), "Storage")),
+    RequestPath = "/Storage"
+});
 
 app.MapControllers();
 

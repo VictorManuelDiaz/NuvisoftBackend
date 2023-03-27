@@ -22,5 +22,7 @@ namespace NuvisoftBackend.Core.Domain.Models
         [ForeignKey("template_id")]
         [JsonPropertyName("Template")]
         public Template Template { get; set; }
+        [JsonPropertyName("Grades")]
+        public List<Grade> Grades { get; set; }
     }
 }
