@@ -39,6 +39,7 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
         public List<Template> GetAll()
         {
             return db.Templates.Include(template => template.Subject)
+                .ThenInclude(subject => subject.GroupSubject)
                 .Include(template => template.Questions)
                 .ThenInclude(question => question.Answers)
                 .Include(template => template.Jobs).OrderBy(v => v.created_at).ToList();

@@ -22,6 +22,9 @@ namespace NuvisoftBackend.Adapters.SQLServerDataAccess.Contexts
         public DbSet<Role> Roles { get; set; }
         public DbSet<Privilege> Privileges { get; set; }
         public DbSet<PrivilegeSubject> PrivilegesSubject { get; set; }
+        public DbSet<Group> Groups { get; set; }
+        public DbSet<GroupSubject> GroupsSubject { get; set; }
+        public DbSet<GroupStudent> GroupsStudent { get; set; }
         public DbSet<Schedule> Schedules { get; set; }
         public DbSet<SubjectSchedule> SubjectSchedules { get; set; }
 
@@ -46,6 +49,9 @@ namespace NuvisoftBackend.Adapters.SQLServerDataAccess.Contexts
             builder.ApplyConfiguration(new ESchool());
             builder.ApplyConfiguration(new EUser());
             builder.ApplyConfiguration(new ERole());
+            builder.ApplyConfiguration(new EGroup());
+            builder.ApplyConfiguration(new EGroupSubject());
+            builder.ApplyConfiguration(new EGroupStudent());
             builder.ApplyConfiguration(new EPrivilege());
             builder.ApplyConfiguration(new EPrivilegeSubject());
             builder.ApplyConfiguration(new ESchedule());

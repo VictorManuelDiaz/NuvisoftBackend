@@ -40,14 +40,16 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
         {
             return db.Users.Include(user => user.School)
                 .Include(user => user.Privileges).ThenInclude(privilege => privilege.Role)
-                .Include(user => user.Privileges).ThenInclude(privilege => privilege.PrivilegesSubject)
-                .ThenInclude(privilege => privilege.Subject).ToList();
+                .Include(user => user.GroupStudent).ThenInclude(groupStudent => groupStudent.Group)
+                .ToList();
         }
 
         public User GetById(Guid entityId)
         {
             var selectedUser = db.Users.Include(user => user.School).Include(user => user.Privileges)
-                .ThenInclude(privilege => privilege.Role).Where(v => v.user_id == entityId).FirstOrDefault();
+                .ThenInclude(privilege => privilege.Role)
+                .Include(user => user.GroupStudent).ThenInclude(groupStudent => groupStudent.Group)
+                .Where(v => v.user_id == entityId).FirstOrDefault();
             return selectedUser;
         }
 

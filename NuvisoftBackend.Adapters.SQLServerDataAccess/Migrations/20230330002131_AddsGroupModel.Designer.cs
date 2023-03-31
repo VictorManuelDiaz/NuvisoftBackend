@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NuvisoftBackend.Adapters.SQLServerDataAccess.Contexts;
 
@@ -11,9 +12,10 @@ using NuvisoftBackend.Adapters.SQLServerDataAccess.Contexts;
 namespace NuvisoftBackend.Adapters.SQLServerDataAccess.Migrations
 {
     [DbContext(typeof(NuvisoftDB))]
-    partial class NuvisoftDBModelSnapshot : ModelSnapshot
+    [Migration("20230330002131_AddsGroupModel")]
+    partial class AddsGroupModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -112,10 +114,6 @@ namespace NuvisoftBackend.Adapters.SQLServerDataAccess.Migrations
                     b.Property<Guid>("school_id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("section")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("updated_at")
                         .HasColumnType("datetime2");
 
@@ -130,39 +128,6 @@ namespace NuvisoftBackend.Adapters.SQLServerDataAccess.Migrations
                     b.HasIndex("school_id");
 
                     b.ToTable("tb_group", (string)null);
-                });
-
-            modelBuilder.Entity("NuvisoftBackend.Core.Domain.Models.GroupStudent", b =>
-                {
-                    b.Property<Guid>("group_student_id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("created_at")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("created_by")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("group_id")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("student_id")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("updated_at")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid>("updated_by")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("group_student_id");
-
-                    b.HasIndex("group_id");
-
-                    b.HasIndex("student_id");
-
-                    b.ToTable("atb_group_student", (string)null);
                 });
 
             modelBuilder.Entity("NuvisoftBackend.Core.Domain.Models.GroupSubject", b =>
@@ -649,24 +614,6 @@ namespace NuvisoftBackend.Adapters.SQLServerDataAccess.Migrations
                     b.Navigation("School");
                 });
 
-            modelBuilder.Entity("NuvisoftBackend.Core.Domain.Models.GroupStudent", b =>
-                {
-                    b.HasOne("NuvisoftBackend.Core.Domain.Models.Group", "Group")
-                        .WithMany("GroupStudent")
-                        .HasForeignKey("group_id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("NuvisoftBackend.Core.Domain.Models.User", "Student")
-                        .WithMany("GroupStudent")
-                        .HasForeignKey("student_id")
-                        .IsRequired();
-
-                    b.Navigation("Group");
-
-                    b.Navigation("Student");
-                });
-
             modelBuilder.Entity("NuvisoftBackend.Core.Domain.Models.GroupSubject", b =>
                 {
                     b.HasOne("NuvisoftBackend.Core.Domain.Models.Group", "Group")
@@ -789,8 +736,6 @@ namespace NuvisoftBackend.Adapters.SQLServerDataAccess.Migrations
 
             modelBuilder.Entity("NuvisoftBackend.Core.Domain.Models.Group", b =>
                 {
-                    b.Navigation("GroupStudent");
-
                     b.Navigation("GroupSubject");
                 });
 
@@ -847,8 +792,6 @@ namespace NuvisoftBackend.Adapters.SQLServerDataAccess.Migrations
             modelBuilder.Entity("NuvisoftBackend.Core.Domain.Models.User", b =>
                 {
                     b.Navigation("Grades");
-
-                    b.Navigation("GroupStudent");
 
                     b.Navigation("Privileges");
                 });

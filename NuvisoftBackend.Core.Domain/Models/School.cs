@@ -24,6 +24,8 @@ namespace NuvisoftBackend.Core.Domain.Models
         public Guid updated_by { get; set; }
         [JsonPropertyName("Users")]
         public List<User> Users { get; set; }
+        [JsonPropertyName("Group")]
+        public List<Group> Groups { get; set; }
 
     }
 }

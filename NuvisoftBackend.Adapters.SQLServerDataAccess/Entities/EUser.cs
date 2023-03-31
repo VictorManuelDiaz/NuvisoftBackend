@@ -24,6 +24,9 @@ namespace NuvisoftBackend.Adapters.SQLServerDataAccess.Entities
 
             builder.HasMany(v => v.Grades)
                 .WithOne(v => v.Student);
+
+            builder.HasMany(v => v.GroupStudent)
+                .WithOne(v => v.Student);
         }
     }
 }

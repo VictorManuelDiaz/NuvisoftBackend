@@ -41,6 +41,8 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
         {
             return db.Jobs.Include(job => job.Template.Subject)
                 .Include(job => job.Template.Questions)
+                .Include(job => job.Template.Subject)
+                .ThenInclude(subject => subject.GroupSubject)
                 .Include(job => job.Grades).OrderBy(v => v.created_at).ToList();
         }
 

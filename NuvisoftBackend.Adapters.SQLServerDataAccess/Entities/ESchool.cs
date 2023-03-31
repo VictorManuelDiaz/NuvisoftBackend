@@ -18,6 +18,9 @@ namespace NuvisoftBackend.Adapters.SQLServerDataAccess.Entities
             builder.HasKey(v => v.school_id);
             builder.HasMany(v => v.Users)
                 .WithOne(v => v.School);
+
+            builder.HasMany(v => v.Groups)
+                .WithOne(v => v.School);
         }
     }
 }

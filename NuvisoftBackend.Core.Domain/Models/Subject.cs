@@ -23,5 +23,7 @@ namespace NuvisoftBackend.Core.Domain.Models
         public List<PrivilegeSubject> PrivilegesSubject { get; set; }
         [JsonPropertyName("SubjectSchedules")]
         public List<SubjectSchedule> SubjectSchedules { get; set; }
+        [JsonPropertyName("GroupSubject")]
+        public List<GroupSubject> GroupSubject { get; set; }
     }
 }

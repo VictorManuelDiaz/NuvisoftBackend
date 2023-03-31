@@ -8,29 +8,23 @@ using System.Threading.Tasks;
 
 namespace NuvisoftBackend.Core.Domain.Models
 {
-    //Modelo Usuarios
-    public class User
+    public class Group
     {
-        public Guid user_id { get; set; }
+        public Guid group_id { get; set; }
+        public string section { get; set; }
         public string name { get; set; }
-        public string last_name { get; set; }
-        public string email { get; set; }
-        public string password { get; set; }
-        public string id_card { get; set; }
+        public int year { get; set; }
         public Guid school_id { get; set; }
         public DateTime created_at { get; set; }
         public DateTime updated_at { get; set; }
         public Guid created_by { get; set; }
         public Guid updated_by { get; set; }
-
+        [JsonPropertyName("GroupSubject")]
+        public List<GroupSubject> GroupSubject { get; set; }
+        [JsonPropertyName("GroupStudent")]
+        public List<GroupStudent> GroupStudent { get; set; }
         [ForeignKey("school_id")]
         [JsonPropertyName("School")]
         public School School { get; set; }
-        [JsonPropertyName("Privileges")]
-        public List<Privilege> Privileges { get; set; }
-        [JsonPropertyName("Grades")]
-        public List<Grade> Grades { get; set; }
-        [JsonPropertyName("GroupStudent")]
-        public List<GroupStudent> GroupStudent { get; set; }
     }
 }

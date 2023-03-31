@@ -40,6 +40,10 @@ namespace NuvisoftBackend.Core.Infraestructure.Repository.Concrete
         public List<Subject> GetAll()
         {
             return db.Subjects.Include(subject => subject.Templates)
+                .Include(subject => subject.GroupSubject)
+                .ThenInclude(groupSubject => groupSubject.Group)
+                .ThenInclude(group => group.GroupStudent)
+                .ThenInclude(groupStudent => groupStudent.Student)
                 .Include(subject => subject.PrivilegesSubject)
                 .ThenInclude(privilege => privilege.Privilege)
                 .ThenInclude(privilege => privilege.Role)
